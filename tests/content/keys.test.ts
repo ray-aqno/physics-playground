@@ -50,7 +50,8 @@ describe('every answer key is derived a second way (council condition 2, SC3)', 
       const derive = DERIVATIONS[step.id];
       if (derive === undefined) return;
       const angle = step.kind === 'numeric' && step.angle === true;
-      const v = checkAnswer(step.answer, typed(derive(), step.answer.dims, angle), { tol: step.tol ?? 0.02, angle });
+      const inUnits = step.kind === 'numeric' ? step.inUnits : undefined;
+      const v = checkAnswer(step.answer, typed(derive(), step.answer.dims, angle), { tol: step.tol ?? 0.02, angle, ...(inUnits === undefined ? {} : { inUnits }) });
       expect(v.message).toBe('Correct!');
     });
   }

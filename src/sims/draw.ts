@@ -49,20 +49,23 @@ export function drawBodies(ctx: CanvasRenderingContext2D, world: World, pal: Pal
   if (oneD) { ctx.beginPath(); ctx.moveTo(0, H * 0.75); ctx.lineTo(W, H * 0.75); ctx.stroke(); }
   // bound: bodies.length <= 8
   world.bodies.forEach((b, i) => {
+    // Drawn at least 44 px wide (carts) or 19 px radius (pucks) so labels fit at 360 px; positions stay to scale.
+    const half = oneD ? Math.max(b.r * s, 22) : Math.max(b.r * s, 19);
     const x = b.x * s;
-    const y = oneD ? H * 0.75 - b.r * s : H - b.y * s;
+    const y = oneD ? H * 0.75 - 14 : H - b.y * s;
     ctx.fillStyle = i === selected ? pal.accent2 : pal.accent;
     ctx.beginPath();
-    if (oneD) ctx.roundRect(x - b.r * s, y - b.r * s, 2 * b.r * s, 2 * b.r * s, 6);
-    else ctx.arc(x, y, b.r * s, 0, 2 * Math.PI);
+    if (oneD) ctx.roundRect(x - half, y - 14, 2 * half, 28, 6);
+    else ctx.arc(x, y, half, 0, 2 * Math.PI);
     ctx.fill();
     ctx.fillStyle = pal.bg;
-    ctx.font = `${Math.max(11, Math.round(b.r * s * 0.6))}px system-ui, sans-serif`;
+    ctx.font = '600 12px system-ui, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(`${b.m} kg`, x, y);
     ctx.strokeStyle = pal.ink;
-    arrow(ctx, x, y - (oneD ? b.r * s + 10 : 0), b.vx * s * 0.4, -b.vy * s * 0.4);
+    ctx.lineWidth = 2;
+    arrow(ctx, x, oneD ? y - 22 : y, b.vx * s * 0.4, -b.vy * s * 0.4);
   });
   if (showCom) drawCom(ctx, world, pal, s, H);
 }

@@ -35,7 +35,7 @@ export type Step =
   | { readonly kind: 'explain'; readonly md: string }
   | { readonly kind: 'predict'; readonly id: string; readonly prompt: string; readonly setup: SimSetup; readonly choices: readonly (Choice & { readonly claim: Claim })[]; readonly answer: number; readonly reveal: string }
   | { readonly kind: 'mcq'; readonly id: string; readonly prompt: string; readonly choices: readonly string[]; readonly answer: number; readonly hint: string; readonly explain: string }
-  | { readonly kind: 'numeric'; readonly id: string; readonly prompt: string; readonly answer: Quantity; readonly tol?: number; readonly sigFigs?: number; readonly angle?: boolean; readonly hint: string; readonly worked: string }
+  | { readonly kind: 'numeric'; readonly id: string; readonly prompt: string; readonly answer: Quantity; readonly tol?: number; readonly sigFigs?: number; readonly angle?: boolean; readonly inUnits?: string; readonly hint: string; readonly worked: string }
   | { readonly kind: 'triage'; readonly id: string; readonly problem: string; readonly stages: readonly TriageStage[]; readonly answer: Quantity; readonly tol?: number; readonly hint: string; readonly worked: string }
   | { readonly kind: 'selfExplain'; readonly id: string; readonly prompt: string; readonly model: string };
 

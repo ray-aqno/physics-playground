@@ -41,6 +41,8 @@ interface ShellProps {
   readonly message: string | null;
   readonly noCanvas: boolean;
   readonly help: string;
+  /** True while a predict step waits for the learner's prediction. */
+  readonly locked?: boolean;
   readonly children: ComponentChildren;
 }
 
@@ -62,7 +64,7 @@ export function SimShell(p: ShellProps) {
       </div>
       {p.message !== null && <p class="sim-message" role="status">{p.message}</p>}
       <div class="sim-controls">
-        <button type="button" class="btn" onClick={p.onToggle}>{p.running ? 'Pause' : 'Play'}</button>
+        <button type="button" class="btn" disabled={p.locked === true} onClick={p.onToggle}>{p.locked === true ? 'Predict first' : p.running ? 'Pause' : 'Play'}</button>
         <button type="button" class="btn btn-ghost" onClick={p.onReset}>Reset</button>
         <button type="button" class="btn btn-ghost" aria-expanded={showHelp} onClick={() => { setShowHelp(!showHelp); }}>Keys</button>
       </div>

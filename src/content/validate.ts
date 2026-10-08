@@ -1,4 +1,6 @@
 import { invariant } from '../lib/invariant';
+import { dimsEqual } from '../checker/dims';
+import { parseUnits } from '../checker/parseQuantity';
 import { fnv1a } from '../progress/exportImport';
 import { TRIAGE_ORDER, type Lesson, type Step } from './types';
 
@@ -15,6 +17,10 @@ function checkStep(step: Step, lesson: Lesson, errors: string[]): void {
   if (step.kind === 'mcq' && (step.choices.length < 2 || step.answer < 0 || step.answer >= step.choices.length || step.hint === '')) errors.push(`${step.id}: bad multiple choice`);
   if (step.kind === 'predict' && (step.choices.length < 2 || step.answer < 0 || step.answer >= step.choices.length || step.reveal === '')) errors.push(`${step.id}: bad predict step`);
   if ((step.kind === 'numeric' || step.kind === 'triage') && (step.hint.trim() === '' || step.worked.trim() === '')) errors.push(`${step.id}: needs a hint and a worked solution`);
+  if (step.kind === 'numeric' && step.inUnits !== undefined) {
+    const u = parseUnits(step.inUnits);
+    if (!u.ok || !dimsEqual(u.value.dims, step.answer.dims)) errors.push(`${step.id}: inUnits "${step.inUnits}" must be units of the answer's dimension`);
+  }
   if (step.kind === 'triage') {
     const names = step.stages.map((s) => s.stage);
     if (names.join() !== TRIAGE_ORDER.join()) errors.push(`${step.id}: TRIAGE needs all 6 stages in order`);

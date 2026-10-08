@@ -46,7 +46,7 @@ export function RampSimView({ params, startS, label, locked = false }: Props) {
   return (
     <SimShell label={label} running={running && !locked} onToggle={toggle} onReset={reset} onKey={onKey}
       readout={bars.map((b) => ({ label: `${b.label} energy`, value: `${fmt(b.joules)} J` }))}
-      description={describeRamp(sim.current.state, params)} message={sim.current.message} noCanvas={!canvas.supported}
+      description={describeRamp(sim.current.state, params)} message={sim.current.message} noCanvas={!canvas.supported} locked={locked}
       help="Space: play or pause. R: reset. Left and right arrows (paused): move the block's starting point.">
       <canvas ref={canvas.ref} class="sim-canvas" />
       <div class="energy-bars" aria-hidden="true">

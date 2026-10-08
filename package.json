@@ -11,7 +11,8 @@
     "lint": "eslint . --max-warnings 0",
     "test": "vitest run",
     "keys:sheet": "vite-node scripts/keys-sheet.ts",
-    "keys:approve": "vite-node scripts/keys-approve.ts"
+    "keys:approve": "vite-node scripts/keys-approve.ts",
+    "check:dist": "vite-node scripts/check-dist.ts"
   },
   "dependencies": {
     "preact": "^10.29.8"

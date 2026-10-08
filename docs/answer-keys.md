@@ -6,7 +6,7 @@ Review each lesson: read every question, check the key against your own working,
 
 ## LAB · Units and dimensional analysis
 
-`lab.units` · hash `d7e16ae7` · **awaiting review**
+`lab.units` · hash `c03e9db4` · **awaiting review**
 
 - **lab.units.q1** (multiple choice): A pendulum's period T (seconds) might depend on its length L (m) and g (m/s²). Which formula has the right dimensions?
   - **Key:** T = 2π √(L / g)
@@ -26,7 +26,7 @@ Review each lesson: read every question, check the key against your own working,
 
 ## LAB · SI prefixes and scientific notation
 
-`lab.prefixes` · hash `e4fa8b80` · **awaiting review**
+`lab.prefixes` · hash `7752d988` · **awaiting review**
 
 - **lab.prefixes.q1** (numeric): Write 4.7 µs in seconds.
   - **Key:** 0.0000047 s

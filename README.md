@@ -29,4 +29,20 @@ pnpm test        # vitest
 pnpm build       # static build in dist/
 ```
 
+## Answer-key review (release gate)
+
+A lesson reaches learners only after a person has checked its answer keys. Every key already has an independent second derivation in the tests, and this review is the final human check.
+
+1. `pnpm keys:sheet` writes [docs/answer-keys.md](docs/answer-keys.md): every question, its key and its worked solution.
+2. Check a lesson against your own working. If it is right, run `pnpm keys:approve <lesson-id> "<your name>"`.
+3. This records the lesson's content hash in `src/content/review.json` and logs the review in [docs/key-review.md](docs/key-review.md).
+
+The app releases the longest reviewed run of lessons from the start of the path. Editing a reviewed lesson changes its hash, which takes it out of release until it is reviewed again (CI fails on a stale review).
+
+To see every lesson before review, use `pnpm dev` or build with `VITE_PREVIEW_ALL=1` (for example, on a Vercel preview deployment). Production builds without the flag show only reviewed lessons. The Playground is always available.
+
+## Deploying
+
+The app is hosted on Vercel at the site root (`vercel.json`). Connect the GitHub repo in Vercel, and each push to `main` deploys. `pnpm check:dist` verifies the build's asset paths and runs in CI.
+
 Design: [RFC 0001](docs/rfc/0001-physics-playground-for-six-ideas-units-c-n-and-r.md).

@@ -155,3 +155,24 @@ describe('vector math against hand values (SC3)', () => {
     expect(y).toBeCloseTo(5, 9);
   });
 });
+
+describe('required units for conversion questions (found by playing the lesson)', () => {
+  const v = quantity(20, VEL);
+  it('retyping the given "72 km/h" does not answer "convert to m/s"', () => {
+    const r = checkAnswer(v, '72 km/h', { inUnits: 'm/s' });
+    expect(r.correct).toBe(false);
+    expect(r.message).toBe('Give your answer in m/s.');
+  });
+  it('20 m/s and 20 m s^-1 are accepted', () => {
+    expect(checkAnswer(v, '20 m/s', { inUnits: 'm/s' }).correct).toBe(true);
+    expect(checkAnswer(v, '20 m s^-1', { inUnits: 'm/s' }).correct).toBe(true);
+  });
+  it('4.7 us is rejected when seconds are required; 4.7e-6 s is accepted', () => {
+    const t = quantity(4.7e-6, TIME);
+    expect(checkAnswer(t, '4.7 us', { inUnits: 's' }).correct).toBe(false);
+    expect(checkAnswer(t, '4.7e-6 s', { inUnits: 's' }).correct).toBe(true);
+  });
+  it('without inUnits, any units of the right dimension still work', () => {
+    expect(checkAnswer(v, '72 km/h').correct).toBe(true);
+  });
+});

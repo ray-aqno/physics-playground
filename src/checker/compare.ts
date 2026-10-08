@@ -1,6 +1,6 @@
 import { invariant } from '../lib/invariant';
 import { dimsEqual, formatDims, type Quantity } from './dims';
-import { parseAnswer } from './parseQuantity';
+import { parseAnswer, parseUnits } from './parseQuantity';
 import { sigFigNote } from './sigfigs';
 import type { ParseError } from './tokenize';
 
@@ -11,6 +11,9 @@ export interface CheckOptions {
   readonly sigFigs?: number;
   /** Answer is an angle: a bare number is read as degrees. Expected value is in radians. */
   readonly angle?: boolean;
+  /** The answer must be given in these units (e.g. "m/s" for a conversion question), not just
+   *  in units of the same dimension; otherwise "72 km/h" would answer "convert 72 km/h to m/s". */
+  readonly inUnits?: string;
 }
 
 export interface Verdict {
@@ -63,6 +66,14 @@ function verdict(fields: Omit<Verdict, 'sigFigNote' | 'parseError'>, note: strin
   return { ...fields, sigFigNote: note, parseError: pe };
 }
 
+/** True when the typed units have the same SI scale as the required unit text. */
+function sameUnitScale(typedFactor: number, inUnits: string): boolean {
+  invariant(Number.isFinite(typedFactor) && typedFactor > 0, 'unit factor must be positive');
+  const want = parseUnits(inUnits);
+  invariant(want.ok, `required units "${inUnits}" must parse`);
+  return Math.abs(typedFactor / want.value.factor - 1) < 1e-9;
+}
+
 /** Grades a typed answer against an SI answer key. Never throws on learner input. */
 export function checkAnswer(expected: Quantity, input: string, opts: CheckOptions = {}): Verdict {
   const tol = opts.tol ?? DEFAULT_TOL;
@@ -79,6 +90,9 @@ export function checkAnswer(expected: Quantity, input: string, opts: CheckOption
   }
   if (!dimsEqual(got.dims, expected.dims)) {
     return verdict({ correct: false, unitsOk: false, valueOk: false, signOk: true, message: `Units don't match: the answer is in ${formatDims(expected.dims)}, you gave ${formatDims(got.dims)}.` });
+  }
+  if (opts.inUnits !== undefined && !sameUnitScale(parsed.value.unitFactor, opts.inUnits)) {
+    return verdict({ correct: false, unitsOk: false, valueOk: false, signOk: true, message: `Give your answer in ${opts.inUnits}.` });
   }
   const note = opts.sigFigs === undefined ? null : sigFigNote(parsed.value.numberTexts, opts.sigFigs);
   if (withinTol(value, expected.value, tol)) return verdict({ correct: true, unitsOk: true, valueOk: true, signOk: true, message: 'Correct!' }, note);

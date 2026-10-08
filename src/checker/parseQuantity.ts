@@ -117,6 +117,8 @@ export interface ParsedAnswer {
   readonly numberTexts: readonly string[];
   /** False when the learner typed a bare number with no units. */
   readonly hasUnits: boolean;
+  /** SI factor of the units the learner typed (1 for m/s, 1/3.6 for km/h). */
+  readonly unitFactor: number;
 }
 
 /** Reads "<3, -4> m/s" or "(3, -4) m/s" (2 or 3 components). */
@@ -140,7 +142,7 @@ function parseVector(s: string): Result<ParsedAnswer, ParseError> {
   const f = units.value.factor;
   invariant(values.length === texts.length, 'one text per component');
   const hasUnits = s.slice(close + 1).trim() !== '';
-  return ok({ quantity: { value: values.map((v) => v * f), dims: units.value.dims }, numberTexts: texts, hasUnits });
+  return ok({ quantity: { value: values.map((v) => v * f), dims: units.value.dims }, numberTexts: texts, hasUnits, unitFactor: f });
 }
 
 /** Parses a learner's typed answer into an SI quantity. Never throws on bad input. */
@@ -157,5 +159,5 @@ export function parseAnswer(raw: string): Result<ParsedAnswer, ParseError> {
   const units = parseUnits(n.rest);
   if (!units.ok) return units;
   const hasUnits = n.rest.trim() !== '';
-  return ok({ quantity: { value: [n.value * units.value.factor], dims: units.value.dims }, numberTexts: [n.text], hasUnits });
+  return ok({ quantity: { value: [n.value * units.value.factor], dims: units.value.dims }, numberTexts: [n.text], hasUnits, unitFactor: units.value.factor });
 }

@@ -23,7 +23,7 @@ export function BodiesSimView({ preset, label, showCom, locked = false }: Props)
   const [selected, setSelected] = useState(0);
   const [, setVersion] = useState(0);
   const bump = useCallback(() => { setVersion((v) => v + 1); }, []);
-  const canvas = useCanvas(preset.height <= 1.5 ? 0.3 : preset.height / preset.width);
+  const canvas = useCanvas(preset.height <= 1.5 ? 0.32 : preset.height / preset.width);
   const dragging = useRef<number | null>(null);
 
   useSimLoop(running && !locked, (steps) => {
@@ -48,7 +48,7 @@ export function BodiesSimView({ preset, label, showCom, locked = false }: Props)
   return (
     <SimShell label={label} running={running && !locked} onToggle={toggle} onReset={reset} onKey={onKey}
       readout={bodiesReadout(world, showCom)} description={describeBodies(world, showCom)} message={sim.current.message}
-      noCanvas={!canvas.supported} help="Space: play or pause. R: reset. 1-8: choose a body. Arrow keys (paused): change its velocity. Drag a body (paused) to move it.">
+      noCanvas={!canvas.supported} locked={locked} help="Space: play or pause. R: reset. 1-8: choose a body. Arrow keys (paused): change its velocity. Drag a body (paused) to move it.">
       <canvas ref={canvas.ref} class="sim-canvas" onPointerDown={pointer.down} onPointerMove={pointer.move} onPointerUp={pointer.up} />
     </SimShell>
   );

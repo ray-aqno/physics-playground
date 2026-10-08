@@ -149,3 +149,275 @@ Review each lesson: read every question, check the key against your own working,
   - Why: The cross product is anti-commutative: B × A = -(A × B) = ⟨0, 0, -5⟩.
 - **lab.cross.q5** (explain it simply): Explain why pushing straight toward a door's hinge cannot open the door, using the cross product.
   - Model answer: Torque is r × F, with size |r| |F| sin θ. Pushing straight toward the hinge makes the force parallel to r, so θ = 0 and sin θ = 0. There is no torque, so the door does not start to rotate however hard you push.
+
+## C1 · Interactions and conserved quantities
+
+`c01` · hash `45df4132` · **awaiting review**
+
+- **c01.q1** (multiple choice): A ball falls toward the ground. Taking the ball alone as the system, is its momentum conserved?
+  - **Key:** No, the Earth interacts with it from outside the system
+  - Why: Gravity is an interaction with the Earth, which is outside a ball-only system, so the ball's momentum changes. Take the ball plus the Earth as the system and the total momentum is conserved: the Earth gains the opposite momentum.
+- **c01.q2** (numeric): Two carts on a track: 2.0 kg moving at +3.0 m/s and 1.0 kg moving at -4.0 m/s. What is the total momentum of the two-cart system?
+  - **Key:** 2 kg·m·s^-1
+  - Worked: p = (2.0)(+3.0) + (1.0)(-4.0) = 6.0 - 4.0 = +2.0 kg·m/s.
+- **c01.q3** (TRIAGE): A 60 kg skater stands at rest on smooth ice holding a 3.0 kg ball. She throws the ball forward at 8.0 m/s (relative to the ice). What is her velocity afterwards? Take forward as positive.
+  - **Key:** -0.4 m·s^-1
+  - Worked: 0 = 60 v + 3.0 × 8.0 → v = -24 / 60 = -0.40 m/s. She slides backwards at 0.40 m/s.
+  - Identify check: Momentum of the skater + ball system
+- **c01.q4** (explain it simply): Explain why the skater moves backwards when she throws the ball forward, without using the word "force".
+  - Model answer: Momentum is conserved for the skater and ball together, and it started at zero. Throwing the ball gives it forward momentum, so the skater must end up with an equal amount of backward momentum to keep the total at zero.
+
+## C2 · Vectors in motion
+
+`c02` · hash `14fe3df8` · **awaiting review**
+
+- **c02.q1** (numeric): A puck slides from position (1, 2) m to (7, -6) m in 2.0 s. What is its average velocity vector?
+  - **Key:** ⟨3, -4⟩ m·s^-1
+  - Worked: Δr = ⟨7 - 1, -6 - 2⟩ = ⟨6, -8⟩ m. v_avg = ⟨6, -8⟩ / 2.0 s = ⟨3, -4⟩ m/s.
+- **c02.q2** (numeric): What is the magnitude of that average velocity?
+  - **Key:** 5 m·s^-1
+  - Worked: |v_avg| = √(9 + 16) = 5.0 m/s.
+- **c02.q3** (TRIAGE): A boat heads due north at 4.0 m/s relative to the water. The river flows due east at 3.0 m/s. What is the boat's velocity relative to the ground? Use east = +x and north = +y.
+  - **Key:** ⟨3, 4⟩ m·s^-1
+  - Worked: v = ⟨0, 4.0⟩ + ⟨3.0, 0⟩ = ⟨3.0, 4.0⟩ m/s, a speed of 5.0 m/s at 53° north of east.
+- **c02.q4** (multiple choice): Two identical 1.0 kg carts move toward each other, each at 2.0 m/s. What is the total momentum?
+  - **Key:** 0
+  - Why: One cart has +2.0 kg·m/s and the other has -2.0 kg·m/s, so the total is zero. Adding speeds instead of vectors would give the wrong 4.0.
+- **c02.q5** (explain it simply): Explain why two objects can both be moving fast while their total momentum is zero.
+  - Model answer: Momentum is a vector, so momenta pointing in opposite directions cancel. Two equal masses moving toward each other at the same speed have equal and opposite momenta, which add to zero even though each one is large.
+
+## C3 · Interactions transfer momentum
+
+`c03` · hash `9b98f660` · **awaiting review**
+
+- **c03.q1** (numeric): A 0.15 kg baseball moving at 20 m/s toward a bat leaves at 30 m/s in the opposite direction. What is the magnitude of the impulse from the bat?
+  - **Key:** 7.5 kg·m·s^-1
+  - Worked: Take "away from the bat" as +. Δp = (0.15)(+30) - (0.15)(-20) = 4.5 + 3.0 = 7.5 N·s.
+- **c03.q2** (numeric): If the bat and ball are in contact for 1.5 ms, what is the average force on the ball (magnitude)?
+  - **Key:** 5000 kg·m·s^-2
+  - Worked: F_avg = 7.5 N·s / 0.0015 s = 5000 N, about 3400 times the ball's weight.
+- **c03.q3** (TRIAGE): A 1200 kg car brakes steadily from 25 m/s to rest in 5.0 s. What is the average braking force? Take the direction of motion as positive.
+  - **Key:** -6000 kg·m·s^-2
+  - Worked: Δp = 0 - 1200 × 25 = -30,000 kg·m/s. F_avg = -30,000 / 5.0 = -6000 N.
+  - Identify check: Impulse: F Δt = Δp
+- **c03.q4** (multiple choice): A truck hits a mosquito. Which gets the larger impulse?
+  - **Key:** Both get the same size impulse
+  - Why: They interact with each other only, so the impulses are equal and opposite. The mosquito's velocity changes enormously because its mass is tiny; the truck's barely changes.
+- **c03.q5** (explain it simply): Explain why an airbag reduces the force on a passenger even though the passenger's momentum change is the same.
+  - Model answer: The passenger has to lose the same momentum either way, so the impulse F Δt is fixed. The airbag makes the stop take longer, so Δt is bigger and the average force is smaller.
+
+## C4 · Particles and systems
+
+`c04` · hash `decbf957` · **awaiting review**
+
+- **c04.q1** (predict): Two pucks of different mass slide toward each other and collide. Watch the center of mass (the cross). After the collision, will its velocity be the same as before, or different?
+  - **Key:** The same (checked against a headless sim run in tests)
+  - Reveal: The collision is an interaction inside the system, so it cannot change the total momentum. The center of mass sails on at the same velocity while the pucks scatter.
+- **c04.q2** (numeric): A 2.0 kg mass sits at x = 0 and a 3.0 kg mass sits at x = 5.0 m. Where is their center of mass?
+  - **Key:** 3 m
+  - Worked: x_cm = (2.0 × 0 + 3.0 × 5.0) / 5.0 = 15 / 5.0 = 3.0 m, closer to the heavier mass.
+- **c04.q3** (numeric): A 2.0 kg puck moves at ⟨3, 0⟩ m/s and a 3.0 kg puck moves at ⟨0, 2⟩ m/s. What is the velocity of their center of mass?
+  - **Key:** ⟨1.2, 1.2⟩ m·s^-1
+  - Worked: p_total = ⟨6, 0⟩ + ⟨0, 6⟩ = ⟨6, 6⟩ kg·m/s. v_cm = ⟨6, 6⟩ / 5.0 = ⟨1.2, 1.2⟩ m/s.
+- **c04.q4** (TRIAGE): Two ice skaters, 50 kg and 75 kg, stand together at rest and push apart. The 50 kg skater moves away at 1.5 m/s. How fast does the 75 kg skater move?
+  - **Key:** 1 m·s^-1
+  - Worked: 0 = 50(-1.5) + 75 v → v = 75 / 75 = 1.0 m/s.
+  - Identify check: Total momentum stays zero
+- **c04.q5** (explain it simply): Explain how fireworks bursting in the sky illustrate the center-of-mass idea.
+  - Model answer: The explosion is internal to the shell, so it cannot change the total momentum. Ignoring air drag, the center of mass of all the pieces keeps following the same arc the shell would have followed, even though the pieces fly off in every direction.
+
+## C5 · Applying momentum conservation
+
+`c05` · hash `cae96f0d` · **awaiting review**
+
+- **c05.q1** (predict): A 3.0 kg cart moving at 2.0 m/s bounces elastically off a 1.0 kg cart at rest. After the collision, what does the heavy cart do?
+  - **Key:** Keeps moving forward, slower (checked against a headless sim run in tests)
+  - Reveal: A heavy object hitting a lighter one keeps going forward: here it slows to 1.0 m/s while the light cart shoots off at 3.0 m/s. It would stop only if the masses were equal, and bounce back only if it were the lighter one.
+- **c05.q2** (numeric): A 1000 kg car moving at 20 m/s rear-ends a 1500 kg car at rest, and they lock together. How fast do they move just after the crash?
+  - **Key:** 8 m·s^-1
+  - Worked: (1000)(20) + (1500)(0) = (2500) v → v = 20,000 / 2500 = 8.0 m/s.
+- **c05.q3** (TRIAGE): A 0.020 kg bullet moving at 400 m/s embeds itself in a 2.0 kg wooden block at rest on ice. How fast does the block (with bullet) slide away?
+  - **Key:** 3.9604 m·s^-1
+  - Worked: v = (0.020 × 400) / 2.020 = 8.0 / 2.020 = 3.96 m/s.
+  - Identify check: Momentum conservation
+- **c05.q4** (numeric): A 4.0 kg object at rest explodes into two pieces. A 1.0 kg piece flies off at ⟨6, 3⟩ m/s. What is the velocity of the 3.0 kg piece?
+  - **Key:** ⟨-2, -1⟩ m·s^-1
+  - Worked: 0 = (1.0)⟨6, 3⟩ + (3.0) v → v = -⟨6, 3⟩ / 3.0 = ⟨-2, -1⟩ m/s.
+- **c05.q5** (explain it simply): Why can you use momentum conservation for a car crash even though friction from the road acts on the cars?
+  - Model answer: The crash lasts a fraction of a second. Friction is small compared with the huge crash forces, so in that short time it transfers very little momentum. The crash forces are internal to the two-car system, so total momentum just before and just after is practically the same.
+
+## C6 · Introducing angular momentum
+
+`c06` · hash `e2fb1233` · **awaiting review**
+
+- **c06.q1** (numeric): A 2.0 kg puck slides at 3.0 m/s along a straight line that passes 0.50 m from the origin. What is the size of its angular momentum about the origin?
+  - **Key:** 3 kg·m^2·s^-1
+  - Worked: L = (2.0)(3.0)(0.50) = 3.0 kg·m²/s.
+- **c06.q2** (numeric): A 0.10 kg ball on a 0.80 m string is whirled in a horizontal circle at 2.0 revolutions per second. What is its angular momentum about the center?
+  - **Key:** 0.80425 kg·m^2·s^-1
+  - Worked: v = 2π(0.80)(2.0) = 10.05 m/s. L = m v r = (0.10)(10.05)(0.80) = 0.804 kg·m²/s.
+- **c06.q3** (TRIAGE): A steady torque of 0.50 N·m acts on a bicycle wheel that starts at rest. What is the wheel's angular momentum after 4.0 s?
+  - **Key:** 2 kg·m^2·s^-1
+  - Worked: L = τ Δt = 0.50 × 4.0 = 2.0 kg·m²/s.
+  - Identify check: τ Δt = ΔL
+- **c06.q4** (multiple choice): A particle moves in a straight line at constant speed, not through the origin. About the origin, its angular momentum is:
+  - **Key:** Constant and not zero
+  - Why: The perpendicular distance from the origin to the line is fixed, and so are m and v, so L = m v r⊥ is constant and not zero. No torque acts, so L cannot change.
+- **c06.q5** (explain it simply): Explain why angular momentum depends on which point you measure it about, while momentum does not.
+  - Model answer: Momentum p = m v involves only the motion. Angular momentum L = r × p also involves the position r from the chosen point, so moving the point changes r and therefore L. The same motion has different lever arms about different points.
+
+## C7 · Conservation of angular momentum
+
+`c07` · hash `a7d0deab` · **awaiting review**
+
+- **c07.q1** (numeric): A skater with I = 4.0 kg·m² spins at 2.0 rev/s, then pulls in their arms to I = 1.6 kg·m². What is their new angular velocity, in rad/s?
+  - **Key:** 31.416 s^-1
+  - Worked: ω₁ = 2.0 × 2π = 4π rad/s. ω₂ = (4.0 / 1.6)(4π) = 10π = 31.4 rad/s (5.0 rev/s).
+- **c07.q2** (TRIAGE): A merry-go-round (a disk with I = 250 kg·m²) spins at 1.2 rad/s. A 40 kg child runs straight toward its center and jumps onto the rim, 2.0 m from the axis. What is the new angular velocity?
+  - **Key:** 0.73171 s^-1
+  - Worked: ω = (250 × 1.2) / (250 + 40 × 4.0) = 300 / 410 = 0.732 rad/s.
+  - Identify check: Angular momentum
+- **c07.q3** (numeric): For the skater in the first question (I from 4.0 to 1.6 kg·m²), by what factor does the rotational kinetic energy increase?
+  - **Key:** 2.5 (no units)
+  - Worked: K₂ / K₁ = I₁ / I₂ = 4.0 / 1.6 = 2.5. The extra energy comes from the work the skater does pulling their arms in.
+- **c07.q4** (multiple choice): A spinning ice skater pulls in their arms and spins faster. What happens to the skater's rotational kinetic energy?
+  - **Key:** It increases
+  - Why: With L fixed, K = L²/(2I) grows as I shrinks. The muscles do work pulling the arms inward against their tendency to fly outward.
+- **c07.q5** (explain it simply): Explain, without equations, why a diver who tucks into a ball spins faster.
+  - Model answer: While in the air nothing twists the diver, so their angular momentum cannot change. Tucking pulls their mass closer to the spin axis, which makes it easier to spin. To keep the same angular momentum with mass closer in, they have to rotate faster.
+
+## C8 · Conservation of energy
+
+`c08` · hash `d41ad3a0` · **awaiting review**
+
+- **c08.q1** (predict): A block is released from rest partway up a frictionless ramp. It slides down, crosses the floor, squashes the spring and comes back. How high up the ramp does it return?
+  - **Key:** To the same height (checked against a headless sim run in tests)
+  - Reveal: With no friction, no energy leaves the block-spring-Earth system as heat. The energy bars trade between gravitational, kinetic and spring energy, and the total stays fixed, so the block climbs back to exactly its starting height.
+- **c08.q2** (numeric): What is the kinetic energy of a 1500 kg car moving at 20 m/s?
+  - **Key:** 300000 kg·m^2·s^-2
+  - Worked: K = ½ (1500)(20)² = ½ (1500)(400) = 300,000 J = 300 kJ.
+- **c08.q3** (TRIAGE): A 0.50 kg ball is dropped from rest 12 m above the ground. Ignoring air resistance, how fast is it moving just before it lands?
+  - **Key:** 15.336 m·s^-1
+  - Worked: v = √(2 × 9.8 × 12) = √235.2 = 15.3 m/s.
+  - Identify check: Energy conservation
+- **c08.q4** (multiple choice): A ball thrown straight up slows down as it rises. Where does its kinetic energy go?
+  - **Key:** Into gravitational potential energy of the ball-Earth system
+  - Why: The kinetic energy becomes gravitational potential energy, which belongs to the ball-Earth system as a whole. It turns back into kinetic energy on the way down.
+- **c08.q5** (explain it simply): Explain why the mass cancels when you find the landing speed of a dropped ball.
+  - Model answer: Both the gravitational energy (m g h) and the kinetic energy (½ m v²) are proportional to the mass. A heavier ball has more energy to convert, but it needs proportionally more energy to reach the same speed, so every mass lands at the same speed.
+
+## C9 · Energy in bonds and rest energy
+
+`c09` · hash `2b8802f7` · **awaiting review**
+
+- **c09.q1** (numeric): Digesting 1.0 g of sugar releases about 17 kJ. If all of it went into lifting a 60 kg person, how high could they be lifted? (g = 9.8 m/s²)
+  - **Key:** 28.912 m
+  - Worked: h = E / (m g) = 17,000 J / (60 × 9.8 N) = 28.9 m. (Real muscles are only about 25% efficient.)
+- **c09.q2** (numeric): Exploding 1.0 kg of TNT releases about 4.2 × 10⁶ J. By how much does the mass of the products drop?
+  - **Key:** 4.6667e-11 kg
+  - Worked: Δm = 4.2 × 10⁶ / (3.00 × 10⁸)² = 4.2 × 10⁶ / 9.0 × 10¹⁶ = 4.7 × 10⁻¹¹ kg. That is 0.00000000047% of the mass, which is why chemists never notice it.
+- **c09.q3** (TRIAGE): Breaking one carbon-carbon bond takes about 7.0 × 10⁻¹⁹ J. How much energy does it take to break one mole (6.022 × 10²³) of these bonds?
+  - **Key:** 421540 kg·m^2·s^-2
+  - Worked: E = 7.0 × 10⁻¹⁹ × 6.022 × 10²³ = 4.2 × 10⁵ J ≈ 420 kJ.
+- **c09.q4** (multiple choice): When two atoms form a chemical bond, energy is:
+  - **Key:** Released to the surroundings
+  - Why: Breaking a bond takes energy, so forming one releases the same amount. A bonded pair sits lower in potential energy than separate atoms.
+- **c09.q5** (explain it simply): Explain, in your own words, why a charged battery is (very slightly) heavier than a flat one.
+  - Model answer: A charged battery stores extra energy in its chemical bonds, and energy has mass by E = m c². Discharging releases that energy, so the battery loses a mass of E/c². It is far too small to weigh, but it is real.
+
+## C10 · Potential energy functions
+
+`c10` · hash `13ea9ddd` · **awaiting review**
+
+- **c10.q1** (predict): The block starts at rest against a squashed spring at the bottom of the track. When released, what happens?
+  - **Key:** It climbs partway up the ramp (checked against a headless sim run in tests)
+  - Reveal: The spring energy ½ k x² = ½ (50)(0.4)² = 4.0 J becomes kinetic energy, then gravitational energy. The block climbs until m g h = 4.0 J, a height of about 0.41 m.
+- **c10.q2** (numeric): A spring with k = 200 N/m is compressed by 0.15 m. How much energy does it store?
+  - **Key:** 2.25 kg·m^2·s^-2
+  - Worked: U = ½ (200)(0.15)² = ½ (200)(0.0225) = 2.25 J.
+- **c10.q3** (TRIAGE): A toy launcher has a spring with k = 400 N/m, compressed 0.050 m. It fires a 0.10 kg ball straight up. How high above the launch point does the ball rise? (Ignore the small height change while the spring extends.)
+  - **Key:** 0.5102 m
+  - Worked: U_spring = ½ (400)(0.050)² = 0.50 J. h = 0.50 / (0.10 × 9.8) = 0.51 m.
+  - Identify check: ½ k x² = m g h
+- **c10.q4** (numeric): How much does the gravitational potential energy of a 1000 kg satellite increase when it is moved from Earth's surface (r = 6.37 × 10⁶ m) to r = 1.27 × 10⁷ m? Use G = 6.67 × 10⁻¹¹ N·m²/kg² and M = 5.97 × 10²⁴ kg.
+  - **Key:** 31157000000 kg·m^2·s^-2
+  - Worked: ΔU = G M m (1/r₁ - 1/r₂) = (3.98 × 10¹⁷)(1.570 × 10⁻⁷ - 7.874 × 10⁻⁸) = 3.12 × 10¹⁰ J.
+- **c10.q5** (explain it simply): Why is it fine to use U = m g h near the ground, but not for a satellite?
+  - Model answer: U = m g h assumes the gravitational pull is the same at every height. Near the ground the height changes are tiny compared with Earth's radius, so g barely changes. For a satellite the distance doubles and g drops a lot, so you need U = -G M m / r.
+
+## C11 · Force and energy
+
+`c11` · hash `7126bd47` · **awaiting review**
+
+- **c11.q1** (numeric): You drag a box 5.0 m across a floor by pulling a rope with 40 N at 60° above the horizontal. How much work does your pull do?
+  - **Key:** 100 kg·m^2·s^-2
+  - Worked: W = F d cos θ = (40)(5.0)(cos 60°) = (40)(5.0)(0.5) = 100 J.
+- **c11.q2** (numeric): An object's potential energy is U(x) = 3x² (U in J, x in m). What is the force on it at x = 2.0 m? (Give the sign.)
+  - **Key:** -12 kg·m·s^-2
+  - Worked: dU/dx = 6x = 12 N at x = 2.0 m, so F = -12 N. It points back toward x = 0, like a spring.
+- **c11.q3** (TRIAGE): A 2.0 kg box slides across a floor at 6.0 m/s. The coefficient of kinetic friction is 0.25. How far does it slide before stopping?
+  - **Key:** 7.3469 m
+  - Worked: d = v² / (2 μ g) = 36 / (2 × 0.25 × 9.8) = 36 / 4.9 = 7.3 m.
+  - Identify check: Work-energy theorem
+- **c11.q4** (multiple choice): A box slides across a horizontal floor. How much work does the normal force do on it?
+  - **Key:** Zero
+  - Why: The normal force is vertical and the motion is horizontal, so they are at 90° and W = F d cos 90° = 0.
+- **c11.q5** (explain it simply): Explain what F = -dU/dx means for a ball sitting in a bowl.
+  - Model answer: The force points the way potential energy decreases fastest, "downhill" on the U graph. In a bowl, U is lowest at the bottom, so wherever the ball is on the side, the force pushes it back toward the bottom. At the bottom the slope is zero, so the force is zero.
+
+## C12 · Rotational energy
+
+`c12` · hash `f1853518` · **awaiting review**
+
+- **c12.q1** (numeric): A flywheel is a solid disk of mass 10 kg and radius 0.30 m, spinning at 100 rad/s. How much rotational kinetic energy does it store?
+  - **Key:** 2250 kg·m^2·s^-2
+  - Worked: I = ½ (10)(0.30)² = 0.45 kg·m². K = ½ (0.45)(100)² = 2250 J.
+- **c12.q2** (TRIAGE): A solid ball rolls without slipping down a ramp, starting from rest 1.2 m above the bottom. How fast is it moving at the bottom?
+  - **Key:** 4.0988 m·s^-1
+  - Worked: v = √(10 × 9.8 × 1.2 / 7) = √16.8 = 4.10 m/s.
+  - Identify check: m g h = ½ m v² + ½ I ω²
+- **c12.q3** (multiple choice): A hoop and a solid disk with the same mass and radius race down a ramp, rolling without slipping. Which wins?
+  - **Key:** The solid disk
+  - Why: The hoop's mass is all at the rim (I = M R²), so more of its energy goes into spin and less into forward motion. The disk (I = ½ M R²) gets to the bottom first.
+- **c12.q4** (explain it simply): Explain why the rolling ball's answer did not depend on its mass or radius.
+  - Model answer: Every energy term was proportional to the mass, so mass cancels. The radius cancels because a bigger ball spins more slowly at the same speed (ω = v/R) while its I grows as R², so the rotational energy for a given speed is the same.
+
+## C13 · Thermal energy
+
+`c13` · hash `8938301c` · **awaiting review**
+
+- **c13.q1** (predict): Same track as before, but now the floor has friction. The block starts from the same place up the ramp. How high does it get on the way back?
+  - **Key:** Lower than where it started (checked against a headless sim run in tests)
+  - Reveal: Friction turns some of the mechanical energy into thermal energy (watch the thermal bar grow), so less is left to climb back. The total of all the bars stays the same.
+- **c13.q2** (numeric): How much energy does it take to heat 0.50 kg of water from 20 °C to 80 °C? (c = 4186 J/(kg·K))
+  - **Key:** 125580 kg·m^2·s^-2
+  - Worked: Q = (0.50)(4186)(60) = 125,580 J ≈ 126 kJ.
+- **c13.q3** (TRIAGE): A 1200 kg car brakes to a stop from 25 m/s. All its kinetic energy goes into the steel brake discs, 8.0 kg in total, with c = 450 J/(kg·K). By how much does their temperature rise? (Answer in K.)
+  - **Key:** 104.17 K
+  - Worked: K = ½ (1200)(25)² = 375,000 J. ΔT = 375,000 / (8.0 × 450) = 104 K.
+  - Identify check: ½ M v² = m c ΔT
+- **c13.q4** (numeric): A 2.0 kg box slows from 4.0 m/s to 1.0 m/s sliding across a rough floor. How much thermal energy is produced?
+  - **Key:** 15 kg·m^2·s^-2
+  - Worked: ΔK = ½ (2.0)(4.0² - 1.0²) = (1.0)(16 - 1) = 15 J of thermal energy.
+- **c13.q5** (explain it simply): Rub your hands together and they get warm. Explain where that energy came from and where it went.
+  - Model answer: Chemical energy in my muscles became kinetic energy of my hands. Friction between the hands turned that motion into thermal energy, the random motion of the atoms in my skin, which I feel as warmth. Energy changed form but none was created or destroyed.
+
+## C14 · Collisions
+
+`c14` · hash `3bbbe007` · **awaiting review**
+
+- **c14.q1** (predict): Cart A slides at 2.0 m/s into an identical cart B at rest. The collision is elastic. What does cart A do afterwards?
+  - **Key:** Stops dead (checked against a headless sim run in tests)
+  - Reveal: Equal masses in an elastic head-on collision swap velocities: A stops and B moves off at 2.0 m/s. That is the only way to conserve both momentum and kinetic energy here.
+- **c14.q2** (predict): Now the carts have sticky bumpers and lock together (perfectly inelastic). What happens to the total kinetic energy?
+  - **Key:** It decreases (checked against a headless sim run in tests)
+  - Reveal: Momentum is still conserved: the pair moves at 1.0 m/s. But kinetic energy drops from 2.0 J to 1.0 J. The missing half becomes thermal energy and sound in the bumpers.
+- **c14.q3** (numeric): A 2.0 kg cart at 3.0 m/s hits a 1.0 kg cart at rest. The coefficient of restitution is e = 0.5. How fast does the 1.0 kg cart move afterwards?
+  - **Key:** 3 m·s^-1
+  - Worked: Momentum: 2v₁' + v₂' = 6. Restitution: v₂' - v₁' = 0.5 × 3 = 1.5. Subtract: 3v₁' = 4.5 → v₁' = 1.5 m/s, so v₂' = 3.0 m/s.
+- **c14.q4** (TRIAGE): A cart slides into an identical cart at rest and they stick together. What fraction of the original kinetic energy is lost?
+  - **Key:** 0.5 (no units)
+  - Worked: v' = v/2. K_before = ½ m v². K_after = ½ (2m)(v/2)² = ¼ m v². Lost fraction = (½ - ¼) / ½ = 0.5.
+  - Identify check: Momentum, then compare K
+- **c14.q5** (explain it simply): Explain why momentum is always conserved in a collision, but kinetic energy is not.
+  - Model answer: The colliding objects push on each other equally and oppositely for the same time, so the momentum one gains the other loses, whatever the bumpers are made of. Kinetic energy is only one form of energy; squashing, heating and sound can take some of it, so the kinetic part can drop while total energy is still conserved.

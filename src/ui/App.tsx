@@ -41,12 +41,12 @@ export function App() {
   else if (route === '#/review') page = <ReviewSession due={due} onExit={exit} />;
   else if (route === '#/settings') page = <Settings store={store} />;
   else if (route === '#/playground') page = <Playground />;
-  else page = <PathView released={released} progress={store.progress} dueCount={due.length} go={go} />;
+  else page = <PathView released={released} progress={store.progress} dueCount={due.length} go={go} unlockAll={PREVIEW_ALL} />;
   const inLesson = lesson !== undefined || route === '#/review';
   return (
     <div class="app">
       {!inLesson && <Header xp={store.progress.xp} streak={displayedStreak(store.progress.streak, today)} due={due.length} route={route} />}
-      {PREVIEW_ALL && !inLesson && <p class="banner banner-preview">Preview build: lessons are shown before their answer keys are checked.</p>}
+      {PREVIEW_ALL && !inLesson && <p class="banner banner-preview">Preview build: every lesson is unlocked, and answer keys have not been checked yet.</p>}
       {!inLesson && <Banners store={store} go={go} />}
       <main id="main">{page}</main>
     </div>

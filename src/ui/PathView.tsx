@@ -8,13 +8,15 @@ interface Props {
   readonly progress: ProgressV1;
   readonly dueCount: number;
   readonly go: (route: string) => void;
+  /** Demo/preview builds: every lesson is open, so any chapter can be shown without the ones before it. */
+  readonly unlockAll?: boolean;
 }
 
 /**
  * The learning path: Skills Lab, then Unit C. A lesson unlocks when the one before it is done.
  * Only released (key-reviewed) lessons appear, so the path never dead-ends (SC12, SC19).
  */
-export function PathView({ released, progress, dueCount, go }: Props) {
+export function PathView({ released, progress, dueCount, go, unlockAll = false }: Props) {
   invariant(released.length <= ALL_LESSONS.length, 'released is a subset');
   const pending = ALL_LESSONS.length - released.length;
   const sections: [string, string, readonly Lesson[]][] = [
@@ -34,7 +36,7 @@ export function PathView({ released, progress, dueCount, go }: Props) {
         <div key={key} class="path-section">
           <h2>{title}</h2>
           <ol class="path-list">
-            {lessons.map((l) => <PathNode key={l.id} lesson={l} progress={progress} released={released} go={go} />)}
+            {lessons.map((l) => <PathNode key={l.id} lesson={l} progress={progress} released={released} go={go} unlockAll={unlockAll} />)}
           </ol>
         </div>
       ))}
@@ -45,12 +47,12 @@ export function PathView({ released, progress, dueCount, go }: Props) {
   );
 }
 
-function PathNode({ lesson, progress, released, go }: { readonly lesson: Lesson; readonly progress: ProgressV1; readonly released: readonly Lesson[]; readonly go: (r: string) => void }) {
+function PathNode({ lesson, progress, released, go, unlockAll }: { readonly lesson: Lesson; readonly progress: ProgressV1; readonly released: readonly Lesson[]; readonly go: (r: string) => void; readonly unlockAll: boolean }) {
   const i = released.indexOf(lesson);
   invariant(i >= 0, 'lesson is released');
   const prev = released[i - 1];
   const record = progress.lessons[lesson.id];
-  const unlocked = prev === undefined || progress.lessons[prev.id]?.done === true;
+  const unlocked = unlockAll || prev === undefined || progress.lessons[prev.id]?.done === true;
   const stars = record === undefined ? 0 : record.bestScore === 1 ? 3 : record.bestScore >= 0.6 ? 2 : 1;
   const state = record?.done === true ? 'done' : unlocked ? 'open' : 'locked';
   return (

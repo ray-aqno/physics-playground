@@ -9,7 +9,10 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --max-warnings 0",
-    "test": "vitest run"
+    "test": "vitest run",
+    "keys:sheet": "vite-node scripts/keys-sheet.ts",
+    "keys:approve": "vite-node scripts/keys-approve.ts",
+    "check:dist": "vite-node scripts/check-dist.ts"
   },
   "dependencies": {
     "preact": "^10.29.8"
@@ -17,11 +20,14 @@
   "devDependencies": {
     "@eslint/js": "^9.39.5",
     "@preact/preset-vite": "^2.10.6",
+    "@types/node": "^24.19.1",
     "eslint": "^9.39.5",
     "globals": "^17.13.0",
+    "happy-dom": "^18.0.1",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.71.1",
     "vite": "^6.4.4",
+    "vite-node": "^3.2.4",
     "vitest": "^3.2.7"
   },
   "packageManager": "pnpm@11.11.0",

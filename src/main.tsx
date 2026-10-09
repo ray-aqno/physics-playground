@@ -1,8 +1,6 @@
 import { render } from 'preact';
-
-function App() {
-  return <main><h1>Physics Playground</h1><p>Skills Lab and Unit C coming soon.</p></main>;
-}
+import './styles.css';
+import { App } from './ui/App';
 
 const root = document.getElementById('app');
 if (root === null) {

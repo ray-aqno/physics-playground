@@ -1,10 +1,10 @@
 import type { Lesson } from '../types';
 import { D, deg, q } from '../units';
 
-export const n06: Lesson = {
-  id: 'n06',
+export const n05: Lesson = {
+  id: 'n05',
   unit: 'N',
-  chapter: 'N6',
+  chapter: 'N5',
   title: 'Inclines, friction and drag',
   minutes: 7,
   needs: ['lab.trig', 'lab.vectors'],
@@ -27,7 +27,7 @@ The block does not sink into or lift off the ramp, so the perpendicular forces b
     },
     {
       kind: 'mcq',
-      id: 'n06.q1',
+      id: 'n05.q1',
       prompt: 'A 5.0 kg block sits at rest on a ramp tilted 30° above horizontal. Nothing touches it except the ramp. Using g = 9.8 m/s², what is the magnitude of the normal force on the block?',
       choices: ['49 N', '42 N', '25 N', '57 N'],
       answer: 1,
@@ -36,7 +36,7 @@ The block does not sink into or lift off the ramp, so the perpendicular forces b
     },
     {
       kind: 'numeric',
-      id: 'n06.q2',
+      id: 'n05.q2',
       prompt: 'A cart is released on a frictionless ramp tilted 15° above horizontal. Take +x along the slope, pointing **uphill**. Using g = 9.8 m/s², what is the cart\'s acceleration component a_x?',
       answer: q(-9.8 * Math.sin(deg(15)), D.acceleration),
       hint: 'Only one force has a component along the slope. Which way does it point compared with +x?',
@@ -44,7 +44,7 @@ The block does not sink into or lift off the ramp, so the perpendicular forces b
     },
     {
       kind: 'numeric',
-      id: 'n06.q3',
+      id: 'n05.q3',
       prompt: 'A book slides down a board tilted 20° above horizontal at **constant speed**. What is the coefficient of kinetic friction between the book and the board?',
       answer: q(Math.tan(deg(20)), D.none),
       hint: 'Constant speed means the net force is zero. Balance the forces along the slope and perpendicular to it.',
@@ -52,7 +52,7 @@ The block does not sink into or lift off the ramp, so the perpendicular forces b
     },
     {
       kind: 'triage',
-      id: 'n06.q4',
+      id: 'n05.q4',
       problem: 'A 2.0 kg box is released from rest at the top of a ramp tilted 30° above horizontal. The coefficient of kinetic friction between the box and the ramp is 0.20, and the box slides. How fast is it moving after it has slid 3.0 m down the ramp? Use g = 9.8 m/s².',
       stages: [
         { stage: 'Translate', prompt: 'What is asked: the box\'s speed (a magnitude) after a 3.0 m slide that starts from rest.', tip: 'Distance is given, not time. That points to v² = v0² + 2aΔx.' },
@@ -81,7 +81,7 @@ A falling object speeds up until drag grows to match its weight. Then the net fo
     },
     {
       kind: 'mcq',
-      id: 'n06.q5',
+      id: 'n05.q5',
       prompt: 'Two balls have the same size and shape, but one is 4 times as massive as the other. Both are dropped from a tall tower in air and reach terminal speed. How do their terminal speeds compare?',
       choices: ['They are equal, because all objects fall at the same rate', 'The heavier ball\'s terminal speed is 2 times larger', 'The heavier ball\'s terminal speed is 4 times larger', 'The lighter ball\'s terminal speed is larger'],
       answer: 1,
@@ -90,7 +90,7 @@ A falling object speeds up until drag grows to match its weight. Then the net fo
     },
     {
       kind: 'numeric',
-      id: 'n06.q6',
+      id: 'n05.q6',
       prompt: 'A 75 kg skydiver falls flat with drag coefficient C = 1.0 and cross-sectional area A = 0.70 m². The air density is 1.2 kg/m³. Using drag D = ½CρAv² and g = 9.8 m/s², what is the skydiver\'s terminal speed?',
       answer: q(Math.sqrt((2 * 75 * 9.8) / (1.0 * 1.2 * 0.7)), D.velocity),
       hint: 'At terminal speed, drag equals weight: ½ C ρ A v² = mg.',
@@ -98,17 +98,17 @@ A falling object speeds up until drag grows to match its weight. Then the net fo
     },
     {
       kind: 'selfExplain',
-      id: 'n06.q7',
+      id: 'n05.q7',
       prompt: 'A friend says, "The normal force always equals the object\'s weight." Explain why that is wrong for a block on a ramp.',
       model: 'The normal force is whatever push the surface must supply to stop the block moving into it. On a ramp only the part of gravity perpendicular to the surface, mg cosθ, pushes into it, so N = mg cosθ, which is less than mg. The other part of gravity, mg sinθ, points along the slope, and the normal force has nothing to do with it. Pushing down on the block or accelerating the ramp would change N again.',
     },
   ],
 };
 
-export const n07: Lesson = {
-  id: 'n07',
+export const n06: Lesson = {
+  id: 'n06',
   unit: 'N',
-  chapter: 'N7',
+  chapter: 'N6',
   title: 'Coupled objects',
   minutes: 7,
   needs: ['lab.units', 'lab.vectors'],
@@ -127,7 +127,7 @@ export const n07: Lesson = {
     },
     {
       kind: 'numeric',
-      id: 'n07.q1',
+      id: 'n06.q1',
       prompt: 'Block A (3.0 kg) and block B (2.0 kg) sit side by side on a frictionless floor, touching. You push A horizontally with 15 N, so A pushes B and both speed up together. What is the magnitude of the force A exerts on B?',
       answer: q(6, D.force),
       hint: 'Find the shared acceleration from the two-block system, then look at B alone.',
@@ -135,7 +135,7 @@ export const n07: Lesson = {
     },
     {
       kind: 'mcq',
-      id: 'n07.q2',
+      id: 'n06.q2',
       prompt: 'In the same setup, while the blocks speed up together, compare the size of the force A exerts on B with the size of the force B exerts on A.',
       choices: ['A on B is larger, since the blocks accelerate toward B', 'They are equal in size', 'B on A is zero, since B is moving away from A', 'A on B is 15 N, and B on A is smaller'],
       answer: 1,
@@ -144,7 +144,7 @@ export const n07: Lesson = {
     },
     {
       kind: 'numeric',
-      id: 'n07.q3',
+      id: 'n06.q3',
       prompt: 'An Atwood machine: a 3.0 kg block and a 2.0 kg block hang on opposite ends of a light string over an ideal pulley and are released from rest. Using g = 9.8 m/s², what is the magnitude of the acceleration of each block?',
       answer: q(((3 - 2) * 9.8) / (3 + 2), D.acceleration),
       hint: 'Treat both blocks as one system moving along the string. Which external forces drive it, and how much mass moves?',
@@ -152,7 +152,7 @@ export const n07: Lesson = {
     },
     {
       kind: 'mcq',
-      id: 'n07.q4',
+      id: 'n06.q4',
       prompt: 'In that Atwood machine, the 3.0 kg block weighs 29.4 N and the 2.0 kg block weighs 19.6 N. What can you say about the tension in the string while the blocks move?',
       choices: ['T = 29.4 N, the heavier weight', 'T = 19.6 N, the lighter weight', 'T is between 19.6 N and 29.4 N', 'T = 49 N, the total weight'],
       answer: 2,
@@ -161,7 +161,7 @@ export const n07: Lesson = {
     },
     {
       kind: 'numeric',
-      id: 'n07.q5',
+      id: 'n06.q5',
       prompt: 'Find the tension in the Atwood machine string (3.0 kg and 2.0 kg blocks, g = 9.8 m/s²).',
       answer: q(2 * (9.8 + ((3 - 2) * 9.8) / (3 + 2)), D.force),
       hint: 'Isolate one block. The 2.0 kg block accelerates upward at 1.96 m/s².',
@@ -169,7 +169,7 @@ export const n07: Lesson = {
     },
     {
       kind: 'triage',
-      id: 'n07.q6',
+      id: 'n06.q6',
       problem: 'A 4.0 kg block on a horizontal table is tied to a light string that runs over an ideal pulley at the table\'s edge to a hanging 2.0 kg block. The coefficient of kinetic friction between the 4.0 kg block and the table is 0.25. The blocks are released and the 4.0 kg block slides. Using g = 9.8 m/s², what is the tension in the string?',
       stages: [
         { stage: 'Translate', prompt: 'What is asked: the tension (a force magnitude) in the string while the blocks move.', tip: 'Tension is internal to the two-block system, so at some point you must look at one block alone.' },
@@ -185,7 +185,7 @@ export const n07: Lesson = {
     },
     {
       kind: 'selfExplain',
-      id: 'n07.q7',
+      id: 'n06.q7',
       prompt: 'Explain why the tension drops out when you treat both Atwood blocks as one system, but you must include it when you look at one block alone.',
       model: 'Measure positions along the string: forward means down on the heavy side and up on the light side. The string pulls up on both blocks with the same T, which is backward (-T) for the heavy block and forward (+T) for the light block. Added over the whole system those two pulls cancel, so only gravity, which is external, drives the motion. When you isolate one block, the string is outside that system, so its pull is an external force on the block and must appear in F_net = m a.',
     },

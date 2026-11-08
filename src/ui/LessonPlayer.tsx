@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import type { Lesson } from '../content/types';
+import { chapterLabel, type Lesson } from '../content/types';
 import { invariant } from '../lib/invariant';
 import { localDay } from '../progress/dates';
 import { notify, store } from './appStore';
@@ -31,7 +31,7 @@ export function LessonPlayer({ lesson, onExit }: { readonly lesson: Lesson; read
           <span style={{ width: `${pct}%` }} />
         </div>
       </header>
-      <h1 class="lesson-title"><span class="chip">{lesson.chapter}</span> {lesson.title}</h1>
+      <h1 class="lesson-title"><span class="chip">{chapterLabel(lesson.chapter)}</span> {lesson.title}</h1>
       <article class="card" key={flow.index}>
         <StepView step={step} state={state} h={h} />
       </article>

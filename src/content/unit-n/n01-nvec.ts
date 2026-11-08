@@ -105,10 +105,10 @@ The unit of force is the **newton**: 1 N = 1 kg·m/s². These laws hold in **ine
   ],
 };
 
-export const n02: Lesson = {
-  id: 'n02',
+export const nvec: Lesson = {
+  id: 'n-vec',
   unit: 'N',
-  chapter: 'N2',
+  chapter: 'NM',
   title: 'Vector calculus of motion',
   minutes: 7,
   needs: ['lab.vectors', 'lab.vector-add'],
@@ -139,7 +139,7 @@ A change in **direction** is a change in velocity, so a turning object accelerat
     },
     {
       kind: 'numeric',
-      id: 'n02.q1',
+      id: 'n-vec.q1',
       prompt: 'A ball\'s position is r(t) = ⟨1.5t², 6.0t - 4.9t²⟩, in meters with t in seconds, x horizontal and y up. What is its velocity vector at t = 1.0 s?',
       answer: q([2 * 1.5 * 1, 6 - 2 * 4.9 * 1], D.velocity),
       hint: 'Differentiate each component separately, then put in t = 1.0 s.',
@@ -147,7 +147,7 @@ A change in **direction** is a change in velocity, so a turning object accelerat
     },
     {
       kind: 'numeric',
-      id: 'n02.q2',
+      id: 'n-vec.q2',
       prompt: 'For the same ball, r(t) = ⟨1.5t², 6.0t - 4.9t²⟩ m, what is its acceleration vector (x horizontal, y up)?',
       answer: q([2 * 1.5, -2 * 4.9], D.acceleration),
       hint: 'Differentiate the velocity components once more.',
@@ -155,7 +155,7 @@ A change in **direction** is a change in velocity, so a turning object accelerat
     },
     {
       kind: 'mcq',
-      id: 'n02.q3',
+      id: 'n-vec.q3',
       prompt: 'A car drives around a circular curve at a constant speed of 15 m/s. Which way does its acceleration point?',
       choices: ['Nowhere: it is zero because the speed is constant', 'Forward, along the velocity', 'Toward the center of the curve', 'Away from the center of the curve'],
       answer: 2,
@@ -164,7 +164,7 @@ A change in **direction** is a change in velocity, so a turning object accelerat
     },
     {
       kind: 'mcq',
-      id: 'n02.q4',
+      id: 'n-vec.q4',
       prompt: 'A ball is thrown straight up. Ignore air resistance and take g = 9.8 m/s². At the very top of its flight, the ball is momentarily at rest. What is its acceleration at that instant?',
       choices: ['Zero, because it is at rest', '9.8 m/s² downward', '9.8 m/s² upward', 'It is switching from up to down, so it has no definite value'],
       answer: 1,
@@ -173,7 +173,7 @@ A change in **direction** is a change in velocity, so a turning object accelerat
     },
     {
       kind: 'numeric',
-      id: 'n02.q5',
+      id: 'n-vec.q5',
       prompt: 'A car heading due east at 20 m/s rounds a bend and, 5.0 s later, is heading due north at 15 m/s. What is its average acceleration vector over those 5.0 s? Use east = +x and north = +y.',
       answer: q([(0 - 20) / 5, (15 - 0) / 5], D.acceleration),
       hint: 'a_avg = Δv / Δt, with Δv = v_final - v_initial found component by component.',
@@ -181,7 +181,7 @@ A change in **direction** is a change in velocity, so a turning object accelerat
     },
     {
       kind: 'triage',
-      id: 'n02.q6',
+      id: 'n-vec.q6',
       problem: 'A motion diagram for a puck shows three successive positions taken 0.50 s apart: A = (0, 0), B = (2.0, 0) and C = (4.0, 1.0), in meters. Estimate the puck\'s acceleration vector at B, using the same x and y axes.',
       stages: [
         { stage: 'Translate', prompt: 'Asked: the acceleration vector at the middle dot B.', tip: 'A vector answer, so give both components, e.g. <a, b> m/s².' },
@@ -197,7 +197,7 @@ A change in **direction** is a change in velocity, so a turning object accelerat
     },
     {
       kind: 'selfExplain',
-      id: 'n02.q7',
+      id: 'n-vec.q7',
       prompt: 'Explain why a car rounding a curve at a steady 50 km/h is accelerating, and which way its acceleration points.',
       model: 'Velocity is a vector, so changing its direction changes it, even at constant speed. Draw the velocity arrows at two nearby moments: same length, slightly rotated. Put them tail to tail and the change Δv points toward the inside of the curve, so the acceleration points toward the center of the turn.',
     },

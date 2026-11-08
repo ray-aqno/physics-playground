@@ -1,5 +1,5 @@
 import { ALL_LESSONS } from '../content/catalog';
-import type { Lesson } from '../content/types';
+import { chapterLabel, type Lesson } from '../content/types';
 import { invariant } from '../lib/invariant';
 import type { ProgressV1 } from '../progress/schema';
 
@@ -59,10 +59,10 @@ function PathNode({ lesson, progress, released, go, unlockAll }: { readonly less
   return (
     <li class={`node node-${state}`}>
       <button type="button" class="node-btn" disabled={!unlocked} onClick={() => { go(`#/lesson/${lesson.id}`); }}
-        aria-label={`${lesson.chapter} ${lesson.title}. ${state === 'done' ? `Done, ${stars} of 3 stars.` : state === 'open' ? 'Ready.' : 'Locked: finish the lesson before it.'}`}>
+        aria-label={`${chapterLabel(lesson.chapter)} ${lesson.title}. ${state === 'done' ? `Done, ${stars} of 3 stars.` : state === 'open' ? 'Ready.' : 'Locked: finish the lesson before it.'}`}>
         <span class="node-dot" aria-hidden="true">{state === 'done' ? '★' : state === 'locked' ? '🔒' : '▶'}</span>
         <span class="node-text">
-          <span class="node-chapter">{lesson.chapter === 'LAB' ? 'Skills Lab' : lesson.chapter} · {lesson.minutes} min</span>
+          <span class="node-chapter">{chapterLabel(lesson.chapter)} · {lesson.minutes} min</span>
           <span class="node-title">{lesson.title}</span>
           {state === 'done' && <span class="node-stars" aria-hidden="true">{'★'.repeat(stars)}{'☆'.repeat(3 - stars)}</span>}
         </span>

@@ -1,10 +1,10 @@
 import type { Lesson } from '../types';
 import { D, deg, q } from '../units';
 
-export const n03: Lesson = {
-  id: 'n03',
+export const n02: Lesson = {
+  id: 'n02',
   unit: 'N',
-  chapter: 'N3',
+  chapter: 'N2',
   title: 'Forces from motion',
   minutes: 7,
   needs: ['lab.units', 'lab.vectors', 'lab.vector-add'],
@@ -28,7 +28,7 @@ To get forces **from motion**: find the acceleration (Δv / Δt, or from a motio
     },
     {
       kind: 'mcq',
-      id: 'n03.q1',
+      id: 'n02.q1',
       prompt: 'A hockey puck slides across frictionless ice at constant velocity. Which forces act on the puck while it slides? (Ignore air.)',
       choices: ['Gravity (down) and the normal force (up) only', 'Gravity, the normal force, and a forward force that keeps it moving', 'Gravity only', 'No forces at all, because its velocity is constant'],
       answer: 0,
@@ -37,7 +37,7 @@ To get forces **from motion**: find the acceleration (Δv / Δt, or from a motio
     },
     {
       kind: 'numeric',
-      id: 'n03.q2',
+      id: 'n02.q2',
       prompt: 'A 60 kg student stands on a bathroom scale in an elevator that is moving upward but slowing down at 1.5 m/s². The scale reads the size of the normal force on the student. What does it read? Use g = 9.8 m/s².',
       answer: q(60 * (9.8 - 1.5), D.force),
       hint: 'Moving up while slowing down means the acceleration points down. Take up as positive and write F_N - m g = m a.',
@@ -53,7 +53,7 @@ The two forces of a third-law pair act on **different objects**. So they never a
     },
     {
       kind: 'mcq',
-      id: 'n03.q3',
+      id: 'n02.q3',
       prompt: 'A book rests on a table. The Earth pulls down on the book. What is the third-law partner of that force?',
       choices: ['The table\'s upward normal force on the book', 'The book\'s upward gravitational pull on the Earth', 'The book\'s downward push on the table', 'There is none, because the book is at rest'],
       answer: 1,
@@ -62,7 +62,7 @@ The two forces of a third-law pair act on **different objects**. So they never a
     },
     {
       kind: 'numeric',
-      id: 'n03.q4',
+      id: 'n02.q4',
       prompt: 'A 2.0 kg drone\'s velocity changes steadily from ⟨3.0, 1.0⟩ m/s to ⟨5.0, -3.0⟩ m/s in 0.50 s (x horizontal, y up). What is the net force on the drone? Give it as a vector, <a, b> N.',
       answer: q([(2 * (5 - 3)) / 0.5, (2 * (-3 - 1)) / 0.5], D.force),
       hint: 'Find Δv component by component, divide by Δt to get a, then multiply by m.',
@@ -70,7 +70,7 @@ The two forces of a third-law pair act on **different objects**. So they never a
     },
     {
       kind: 'triage',
-      id: 'n03.q5',
+      id: 'n02.q5',
       problem: 'A 5.0 kg crate is dragged across a level floor by a horizontal rope with a tension of 25 N. Its speed rises steadily from 1.0 m/s to 3.0 m/s in 2.0 s. What is the friction force on the crate? Give its x-component, taking +x in the direction of motion.',
       stages: [
         { stage: 'Translate', prompt: 'Asked: the friction force on the crate, as a signed x-component.', tip: 'Friction is not given directly. It has to come out of the motion.' },
@@ -86,17 +86,17 @@ The two forces of a third-law pair act on **different objects**. So they never a
     },
     {
       kind: 'selfExplain',
-      id: 'n03.q6',
+      id: 'n02.q6',
       prompt: 'A horse pulls a cart. By Newton\'s third law the cart pulls back on the horse just as hard. Explain how the horse and cart can still speed up.',
       model: 'The two forces of a third-law pair act on different objects, so they cannot cancel. Whether the cart speeds up depends only on the forces on the cart: the horse\'s forward pull beats the backward friction on its wheels. The horse speeds up because the ground pushes forward on its hooves harder than the cart pulls back on it.',
     },
   ],
 };
 
-export const n04: Lesson = {
-  id: 'n04',
+export const n03: Lesson = {
+  id: 'n03',
   unit: 'N',
-  chapter: 'N4',
+  chapter: 'N3',
   title: 'Motion from forces',
   minutes: 7,
   needs: ['lab.units', 'lab.sigfigs'],
@@ -115,7 +115,7 @@ export const n04: Lesson = {
     },
     {
       kind: 'mcq',
-      id: 'n04.q1',
+      id: 'n03.q1',
       prompt: 'A 5.0 kg bowling ball and a 0.50 kg ball are dropped together from the same height. Ignoring air resistance, which lands first?',
       choices: ['The 5.0 kg ball, because gravity pulls on it 10 times harder', 'They land at the same time', 'The 0.50 kg ball, because it is easier to accelerate'],
       answer: 1,
@@ -124,7 +124,7 @@ export const n04: Lesson = {
     },
     {
       kind: 'numeric',
-      id: 'n04.q2',
+      id: 'n03.q2',
       prompt: 'A 1200 kg car starts from rest. The net force on it is a constant 3000 N forward. How far does it travel in the first 4.0 s?',
       answer: q(0.5 * (3000 / 1200) * 4 ** 2, D.length),
       hint: 'Find a = F_net / m first. It starts from rest, so v₀ = 0.',
@@ -132,7 +132,7 @@ export const n04: Lesson = {
     },
     {
       kind: 'numeric',
-      id: 'n04.q3',
+      id: 'n03.q3',
       prompt: 'A stone is thrown straight up at 7.0 m/s from a bridge 20 m above a river. Ignoring air resistance, what is its velocity just before it hits the water? Take up as positive and use g = 9.8 m/s².',
       answer: q(-Math.sqrt(7 ** 2 + 2 * 9.8 * 20), D.velocity),
       hint: 'With up positive, a = -9.8 m/s² and the stone ends 20 m below its start, so Δy = -20 m. No time is given.',
@@ -140,7 +140,7 @@ export const n04: Lesson = {
     },
     {
       kind: 'mcq',
-      id: 'n04.q4',
+      id: 'n03.q4',
       prompt: 'A ball is thrown straight up. At the very top of its path (ignoring air), what is its acceleration?',
       choices: ['Zero, because it has stopped', '9.8 m/s² downward', '9.8 m/s² upward', 'Zero for an instant, then 9.8 m/s² downward'],
       answer: 1,
@@ -159,7 +159,7 @@ Each step pretends the acceleration stays fixed for one Δt. Smaller steps give 
     },
     {
       kind: 'numeric',
-      id: 'n04.q5',
+      id: 'n03.q5',
       prompt: 'A 1.0 kg ball is dropped from rest. Air drag on it has size (0.10 kg/m) v², pointing up while it falls. Model it step by step with Δt = 0.50 s: each step, compute a from the current speed, then v_new = v + a Δt. Taking down as positive, what is v after two steps (t = 1.0 s)? Use g = 9.8 m/s².',
       answer: q(9.8 * 0.5 + (9.8 - (0.1 * (9.8 * 0.5) ** 2) / 1.0) * 0.5, D.velocity),
       hint: 'In step 1 the speed is zero, so there is no drag yet. In step 2, use the speed you got from step 1 to find the drag.',
@@ -167,7 +167,7 @@ Each step pretends the acceleration stays fixed for one Δt. Smaller steps give 
     },
     {
       kind: 'triage',
-      id: 'n04.q6',
+      id: 'n03.q6',
       problem: 'A 2.0 kg box is pulled straight up from rest by a rope with a constant tension of 29.6 N. How fast is it moving after it has risen 2.5 m? Use g = 9.8 m/s² and ignore air resistance.',
       stages: [
         { stage: 'Translate', prompt: 'Asked: the box\'s speed after rising 2.5 m from rest.', tip: 'No time is given and none is asked for. Note that now.' },
@@ -183,17 +183,17 @@ Each step pretends the acceleration stays fixed for one Δt. Smaller steps give 
     },
     {
       kind: 'selfExplain',
-      id: 'n04.q7',
+      id: 'n03.q7',
       prompt: 'Explain why a step-by-step model gets more accurate as the time step Δt gets smaller, and how you could check whether your Δt is small enough.',
       model: 'During each step the model treats the acceleration as fixed at its start-of-step value, but really it changes during the step (the drag grows as the ball speeds up). A shorter step leaves less time for it to change, so the error shrinks. To check, halve Δt and run again: if the answer barely changes, the step was small enough.',
     },
   ],
 };
 
-export const n05: Lesson = {
-  id: 'n05',
+export const n04: Lesson = {
+  id: 'n04',
   unit: 'N',
-  chapter: 'N5',
+  chapter: 'N4',
   title: 'Statics',
   minutes: 7,
   needs: ['lab.trig', 'lab.vectors'],
@@ -209,7 +209,7 @@ Ropes and cables pull along their length. A rope at angle θ above the horizonta
     },
     {
       kind: 'numeric',
-      id: 'n05.q1',
+      id: 'n04.q1',
       prompt: 'A 10 kg lamp hangs from the midpoint of a wire. Each half of the wire makes 30° below the horizontal. What is the tension in each half of the wire? Use g = 9.8 m/s².',
       answer: q((10 * 9.8) / (2 * Math.sin(deg(30))), D.force),
       hint: 'Only the vertical components hold the lamp up. Each half supplies T sin 30° upward.',
@@ -217,7 +217,7 @@ Ropes and cables pull along their length. A rope at angle θ above the horizonta
     },
     {
       kind: 'mcq',
-      id: 'n05.q2',
+      id: 'n04.q2',
       prompt: 'A wet towel hangs from the middle of a clothesline. You pull the line tighter so that it sags less (the angle to the horizontal gets smaller). What happens to the tension in the line?',
       choices: ['It gets smaller, because the line is tighter', 'It stays the same, because the towel weighs the same', 'It gets bigger, and grows without limit as the line approaches straight', 'It gets bigger, but never more than the towel\'s weight'],
       answer: 2,
@@ -240,7 +240,7 @@ Ropes and cables pull along their length. A rope at angle θ above the horizonta
     },
     {
       kind: 'mcq',
-      id: 'n05.q3',
+      id: 'n04.q3',
       prompt: 'A 10 kg crate rests on a level floor with μs = 0.50. You push it horizontally with 20 N and it does not move. How big is the static friction force on it? (g = 9.8 m/s²)',
       choices: ['49 N, which is μs F_N', '20 N', 'Zero, because nothing is moving', '98 N, the crate\'s weight'],
       answer: 1,
@@ -249,7 +249,7 @@ Ropes and cables pull along their length. A rope at angle θ above the horizonta
     },
     {
       kind: 'numeric',
-      id: 'n05.q4',
+      id: 'n04.q4',
       prompt: 'A 0.50 kg mass hangs at rest from a vertical spring with spring constant k = 49 N/m. How far is the spring stretched from its relaxed length? Use g = 9.8 m/s².',
       answer: q((0.5 * 9.8) / 49, D.length),
       hint: 'At rest, the spring force up balances gravity down: k x = m g.',
@@ -257,7 +257,7 @@ Ropes and cables pull along their length. A rope at angle θ above the horizonta
     },
     {
       kind: 'numeric',
-      id: 'n05.q5',
+      id: 'n04.q5',
       prompt: 'A 5.0 kg block on a level floor is attached to a horizontal spring (k = 98 N/m) whose other end is fixed to a wall. The coefficient of static friction is μs = 0.40. You slide the block away from the wall, stretching the spring, and release it gently. What is the largest stretch at which the block stays at rest? Use g = 9.8 m/s².',
       answer: q((0.4 * 5 * 9.8) / 98, D.length),
       hint: 'The block stays put as long as the spring force is no bigger than the static friction ceiling μs F_N.',
@@ -265,7 +265,7 @@ Ropes and cables pull along their length. A rope at angle θ above the horizonta
     },
     {
       kind: 'triage',
-      id: 'n05.q6',
+      id: 'n04.q6',
       problem: 'A 20 kg crate is dragged across a level floor at constant velocity by a rope pulled at 30° above the horizontal. The coefficient of kinetic friction is 0.40. What is the tension in the rope? Use g = 9.8 m/s².',
       stages: [
         { stage: 'Translate', prompt: 'Asked: the size of the tension. "Constant velocity" means a = 0.', tip: 'Constant velocity is equilibrium, just like rest.' },
@@ -281,7 +281,7 @@ Ropes and cables pull along their length. A rope at angle θ above the horizonta
     },
     {
       kind: 'selfExplain',
-      id: 'n05.q7',
+      id: 'n04.q7',
       prompt: 'A crate sits on a level floor with μs = 0.60. Explain why the static friction force on it is not simply μs F_N, and what μs F_N actually tells you.',
       model: 'Static friction is whatever force keeps the surfaces from sliding, so it just balances the other horizontal forces: zero if nobody pushes, 20 N against a 20 N push. μs F_N is only the ceiling, the most static friction can supply. Push harder than that and the crate starts to slide, and kinetic friction takes over.',
     },

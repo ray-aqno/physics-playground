@@ -2,7 +2,7 @@ import type { Quantity } from '../checker/dims';
 import type { WorldSpec } from '../physics/bodies';
 import type { RampParams } from '../physics/energyRamp';
 
-export type UnitId = 'lab' | 'C';
+export type UnitId = 'lab' | 'C' | 'N';
 export type SimId = 'collisions' | 'com' | 'energy';
 export type TriageStageName = 'Translate' | 'Represent' | 'Identify' | 'Assume' | 'Generate' | 'Evaluate';
 export const TRIAGE_ORDER: readonly TriageStageName[] = ['Translate', 'Represent', 'Identify', 'Assume', 'Generate', 'Evaluate'];
@@ -42,7 +42,7 @@ export type Step =
 export interface Lesson {
   readonly id: string;
   readonly unit: UnitId;
-  /** "LAB" for the Skills Lab, "C1".."C14" for Unit C. */
+  /** "LAB" for the Skills Lab, "C1".."C14" for Unit C, "N1".."N13" for Unit N, "NM" for an unnumbered Unit N math module. */
   readonly chapter: string;
   readonly title: string;
   readonly minutes: number;
@@ -55,4 +55,10 @@ export type AnswerStep = Extract<Step, { kind: 'numeric' | 'triage' }>;
 
 export function isAnswerStep(s: Step): s is AnswerStep {
   return s.kind === 'numeric' || s.kind === 'triage';
+}
+
+/** How a chapter code is shown to learners: unnumbered modules get a name instead of a code. */
+export function chapterLabel(chapter: string): string {
+  if (chapter === 'LAB') return 'Skills Lab';
+  return chapter === 'NM' ? 'Math module' : chapter;
 }

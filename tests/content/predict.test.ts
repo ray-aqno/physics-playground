@@ -84,3 +84,14 @@ describe('Unit C coverage (Stage 6)', () => {
     for (const lesson of unitC) expect(lesson.steps.some((s) => s.kind === 'triage')).toBe(true);
   });
 });
+
+describe('Unit N coverage (N1-N7 for the Unit N test)', () => {
+  const unitN = ALL_LESSONS.filter((l) => l.unit === 'N');
+  it('every chapter N1-N7 has a lesson', () => {
+    const chapters = new Set(unitN.map((l) => l.chapter));
+    for (let c = 1; c <= 7; c++) expect(chapters.has(`N${c}`)).toBe(true);
+  });
+  it('every Unit N chapter has a TRIAGE problem', () => {
+    for (const lesson of unitN) expect(lesson.steps.some((s) => s.kind === 'triage')).toBe(true);
+  });
+});

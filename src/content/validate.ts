@@ -7,7 +7,7 @@ import { TRIAGE_ORDER, type Lesson, type Step } from './types';
 export const MAX_LESSONS = 200;
 export const MAX_STEPS = 30;
 const ID_RE = /^[a-z0-9][a-z0-9.-]{0,63}$/;
-const CHAPTER_RE = /^(LAB|C([1-9]|1[0-4]))$/;
+const CHAPTER_RE = /^(LAB|C([1-9]|1[0-4])|N([1-9]|1[0-3]|M))$/;
 
 function checkStep(step: Step, lesson: Lesson, errors: string[]): void {
   invariant(lesson.id.length > 0, 'lesson needs an id');
@@ -40,7 +40,7 @@ export function validateLessons(lessons: readonly Lesson[]): string[] {
   for (const lesson of lessons) {
     if (!ID_RE.test(lesson.id) || lessonIds.has(lesson.id)) errors.push(`lesson id "${lesson.id}" is invalid or repeated`);
     lessonIds.add(lesson.id);
-    if (!CHAPTER_RE.test(lesson.chapter) || (lesson.unit === 'lab') !== (lesson.chapter === 'LAB')) errors.push(`${lesson.id}: bad chapter ${lesson.chapter}`);
+    if (!CHAPTER_RE.test(lesson.chapter) || (lesson.chapter === 'LAB' ? 'lab' : lesson.chapter.charAt(0)) !== lesson.unit) errors.push(`${lesson.id}: bad chapter ${lesson.chapter}`);
     if (lesson.minutes < 3 || lesson.minutes > 7) errors.push(`${lesson.id}: lessons are 3-7 minutes`);
     if (lesson.steps.length < 1 || lesson.steps.length > MAX_STEPS) errors.push(`${lesson.id}: needs 1-${MAX_STEPS} steps`);
     // bound: steps.length <= MAX_STEPS (30), checked above

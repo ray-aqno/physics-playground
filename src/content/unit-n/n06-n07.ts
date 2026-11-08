@@ -91,7 +91,7 @@ A falling object speeds up until drag grows to match its weight. Then the net fo
     {
       kind: 'numeric',
       id: 'n06.q6',
-      prompt: 'A 75 kg skydiver falls flat with drag coefficient C = 1.0 and cross-sectional area A = 0.70 m². The air density is 1.2 kg/m³. Using g = 9.8 m/s², what is the skydiver\'s terminal speed?',
+      prompt: 'A 75 kg skydiver falls flat with drag coefficient C = 1.0 and cross-sectional area A = 0.70 m². The air density is 1.2 kg/m³. Using drag D = ½CρAv² and g = 9.8 m/s², what is the skydiver\'s terminal speed?',
       answer: q(Math.sqrt((2 * 75 * 9.8) / (1.0 * 1.2 * 0.7)), D.velocity),
       hint: 'At terminal speed, drag equals weight: ½ C ρ A v² = mg.',
       worked: 'v_t = √(2mg / (C ρ A)) = √(2 × 75 × 9.8 / (1.0 × 1.2 × 0.70)) = √(1470 / 0.84) = √1750 = 42 m/s, about 150 km/h.',

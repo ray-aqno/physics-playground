@@ -51,6 +51,18 @@ The block does not sink into or lift off the ramp, so the perpendicular forces b
       worked: 'Perpendicular: N = mg cos 20°. Along the slope: friction balances gravity, so μk N = mg sin 20°. Divide: μk = sin 20° / cos 20° = tan 20° = 0.36. The mass and g cancel.',
     },
     {
+      kind: 'predict',
+      id: 'n05.p1',
+      prompt: 'A 2.0 kg block is pushed up a 30° slope at 2.0 m/s and let go. Between the block and the slope, μs = 0.30 and μk = 0.20. Where does it end up?',
+      setup: { sim: 'incline', params: { m: 2, angle: Math.PI / 6, muS: 0.3, muK: 0.2, g: 9.8, length: 5 }, startS: 3, startV: -2, seconds: 2 },
+      choices: [
+        { text: 'It stops at its highest point and stays there', claim: { kind: 'ends-lower', lower: false } },
+        { text: 'It stops, then slides back down past where it started', claim: { kind: 'ends-lower', lower: true } },
+      ],
+      answer: 1,
+      reveal: 'On the way up, gravity and kinetic friction both point down the slope: a = g(sinθ + μk cosθ) = 6.6 m/s², so it stops after only 0.30 m. At rest it stays only if tanθ ≤ μs, but tan 30° = 0.58 > 0.30, so it slides back. On the way down, friction now points up the slope: a = g(sinθ − μk cosθ) = 3.2 m/s². Watch the friction arrow flip at the turning point.',
+    },
+    {
       kind: 'triage',
       id: 'n05.q4',
       problem: 'A 2.0 kg box is released from rest at the top of a ramp tilted 30° above horizontal. The coefficient of kinetic friction between the box and the ramp is 0.20, and the box slides. How fast is it moving after it has slid 3.0 m down the ramp? Use g = 9.8 m/s².',
@@ -166,6 +178,19 @@ export const n06: Lesson = {
       answer: q(2 * (9.8 + ((3 - 2) * 9.8) / (3 + 2)), D.force),
       hint: 'Isolate one block. The 2.0 kg block accelerates upward at 1.96 m/s².',
       worked: '2.0 kg block, up positive: T - m2 g = m2 a, so T = m2(g + a) = (2.0)(9.8 + 1.96) = 23.5 N. Check with the 3.0 kg block, down positive: m1 g - T = (3.0)(9.8) - 23.5 = 5.9 N = (3.0)(1.96). ✓',
+    },
+    {
+      kind: 'predict',
+      id: 'n06.p1',
+      prompt: 'An Atwood machine: a 2.0 kg block and a 3.0 kg block hang from one string over a light, frictionless pulley. You release them. While they move, how does the string tension compare with the 3.0 kg block\'s weight (29.4 N)?',
+      setup: { sim: 'pulley', params: { mode: 'atwood', m1: 2, m2: 3, muS: 0, muK: 0, g: 9.8, travel: 1.5 }, seconds: 1 },
+      choices: [
+        { text: 'Equal: the string just carries the hanging weight', claim: { kind: 'tension-vs-weight', relation: 'equal' } },
+        { text: 'Less than its weight', claim: { kind: 'tension-vs-weight', relation: 'less' } },
+        { text: 'More than its weight: the string has to hold the heavy block up', claim: { kind: 'tension-vs-weight', relation: 'more' } },
+      ],
+      answer: 1,
+      reveal: 'The 3.0 kg block accelerates downward, so the net force on it must point down: T < m₂g. Here a = (3 − 2)(9.8)/5 = 1.96 m/s² and T = 3.0(9.8 − 1.96) = 23.5 N, which is between the two weights (19.6 N and 29.4 N). T equals a hanging weight only when nothing accelerates.',
     },
     {
       kind: 'triage',

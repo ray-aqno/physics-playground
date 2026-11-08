@@ -103,6 +103,19 @@ At the top, both N and gravity point **down**, toward the center. The slowest th
       explain: 'The rider needs m v²/r = (50)(12²)/8.0 = 900 N toward the center, which at the top is down. Gravity supplies 490 N of that, and the seat, which is above her, pushes down with the rest: N = 900 - 490 = 410 N. "Upward" treats the normal force as if it always holds you up. 1390 N is the bottom-of-the-loop formula. 490 N assumes the normal force equals the weight. At the minimum speed √(g r) = 8.9 m/s, N would be zero.',
     },
     {
+      kind: 'predict',
+      id: 'n07.p1',
+      prompt: 'A puck on frictionless ice circles a post on a 1.0 m string at 2.0 m/s. The string is cut when the puck is at the top of the circle, moving left. Which path does it take?',
+      setup: { sim: 'circle', params: { m: 0.5, r: 1, speed: 2 }, releaseAt: Math.PI / 4, seconds: 2 },
+      choices: [
+        { text: 'Straight out, away from the post', claim: { kind: 'release-path', path: 'outward' } },
+        { text: 'A straight line along the direction it was moving (the tangent)', claim: { kind: 'release-path', path: 'tangent' } },
+        { text: 'It keeps curving for a while, then straightens out', claim: { kind: 'release-path', path: 'curved' } },
+      ],
+      answer: 1,
+      reveal: 'Once the string is cut, no horizontal force acts, so by Newton\'s first law the puck keeps the velocity it had at that instant. That velocity is along the tangent, so it moves straight left. Nothing pushes it "outward"; the string was only ever pulling inward. Look at the trail: a straight line touching the circle.',
+    },
+    {
       kind: 'triage',
       id: 'n07.q6',
       problem: 'A highway curve of radius 80 m is banked at 12° toward its center. On an icy day the friction between the tires and the road is negligible. At what speed must a car travel to round the curve without sliding up or down the bank? Use g = 9.8 m/s².',

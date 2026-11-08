@@ -1,9 +1,12 @@
 import type { Quantity } from '../checker/dims';
 import type { WorldSpec } from '../physics/bodies';
 import type { RampParams } from '../physics/energyRamp';
+import type { CircleParams } from '../physics/circle';
+import type { InclineParams } from '../physics/incline';
+import type { PulleyParams } from '../physics/pulley';
 
 export type UnitId = 'lab' | 'C' | 'N';
-export type SimId = 'collisions' | 'com' | 'energy';
+export type SimId = 'collisions' | 'com' | 'energy' | 'incline' | 'pulley' | 'circle';
 export type TriageStageName = 'Translate' | 'Represent' | 'Identify' | 'Assume' | 'Generate' | 'Evaluate';
 export const TRIAGE_ORDER: readonly TriageStageName[] = ['Translate', 'Represent', 'Identify', 'Assume', 'Generate', 'Evaluate'];
 
@@ -22,14 +25,25 @@ export interface TriageStage {
 /** A sim setup that the predict step's claims are checked against, headless, in tests. */
 export type SimSetup =
   | { readonly sim: 'collisions' | 'com'; readonly world: WorldSpec; readonly seconds: number }
-  | { readonly sim: 'energy'; readonly ramp: RampParams; readonly startS: number; readonly seconds: number };
+  | { readonly sim: 'energy'; readonly ramp: RampParams; readonly startS: number; readonly seconds: number }
+  | { readonly sim: 'incline'; readonly params: InclineParams; readonly startS: number; readonly startV: number; readonly seconds: number }
+  | { readonly sim: 'pulley'; readonly params: PulleyParams; readonly seconds: number }
+  | { readonly sim: 'circle'; readonly params: CircleParams; readonly releaseAt: number; readonly seconds: number };
 
 /** Claims a predict choice can make; tests evaluate them on the headless sim run. */
 export type Claim =
   | { readonly kind: 'velocity-sign'; readonly body: number; readonly sign: -1 | 0 | 1 }
   | { readonly kind: 'ke-change'; readonly change: 'same' | 'less' | 'more' }
   | { readonly kind: 'com-velocity'; readonly change: 'same' | 'different' }
-  | { readonly kind: 'max-height'; readonly relation: 'lower' | 'same' | 'higher' };
+  | { readonly kind: 'max-height'; readonly relation: 'lower' | 'same' | 'higher' }
+  /** Incline: does the block end lower down the slope than it started? */
+  | { readonly kind: 'ends-lower'; readonly lower: boolean }
+  /** Pulley: which way block 2 moves (+1 down, 0 stays, -1 up). */
+  | { readonly kind: 'pulley-direction'; readonly sign: -1 | 0 | 1 }
+  /** Pulley: string tension compared with block 2's weight m2 g (1% tolerance for "equal"). */
+  | { readonly kind: 'tension-vs-weight'; readonly relation: 'less' | 'equal' | 'more' }
+  /** Circle: the path after the string is cut. */
+  | { readonly kind: 'release-path'; readonly path: 'tangent' | 'outward' | 'curved' };
 
 export type Step =
   | { readonly kind: 'explain'; readonly md: string }

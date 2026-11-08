@@ -13,7 +13,7 @@ interface Props {
 }
 
 /**
- * The learning path: Skills Lab, then Unit C. A lesson unlocks when the one before it is done.
+ * The learning path: Skills Lab, then Unit C, then Unit N. A lesson unlocks when the one before it is done.
  * Only released (key-reviewed) lessons appear, so the path never dead-ends (SC12, SC19).
  */
 export function PathView({ released, progress, dueCount, go, unlockAll = false }: Props) {
@@ -22,6 +22,7 @@ export function PathView({ released, progress, dueCount, go, unlockAll = false }
   const sections: [string, string, readonly Lesson[]][] = [
     ['lab', 'Skills Lab', released.filter((l) => l.unit === 'lab')],
     ['C', 'Unit C · Conservation laws', released.filter((l) => l.unit === 'C')],
+    ['N', 'Unit N · The laws of physics are universal', released.filter((l) => l.unit === 'N')],
   ];
   return (
     <section class="path" aria-label="Learning path">

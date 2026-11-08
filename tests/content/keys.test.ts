@@ -7,8 +7,9 @@ import { isAnswerStep, type AnswerStep } from '../../src/content/types';
 import { validateLessons } from '../../src/content/validate';
 import { LAB_DERIVATIONS } from './derivations-lab';
 import { UNIT_C_DERIVATIONS } from './derivations-unit-c';
+import { UNIT_N_DERIVATIONS } from './derivations-unit-n';
 
-const DERIVATIONS = { ...LAB_DERIVATIONS, ...UNIT_C_DERIVATIONS };
+const DERIVATIONS = { ...LAB_DERIVATIONS, ...UNIT_C_DERIVATIONS, ...UNIT_N_DERIVATIONS };
 const BASE = ['m', 'kg', 's', 'A', 'K', 'mol', 'cd'];
 
 /** Writes an SI value the way a learner might type it, e.g. "12 m kg s^-1". */

@@ -264,6 +264,18 @@ Ropes and cables pull along their length. A rope at angle θ above the horizonta
       worked: 'F_N = m g = 49 N, so the friction ceiling is 0.40 × 49 = 19.6 N. k x ≤ 19.6 N → x ≤ 19.6 / 98 = 0.20 m.',
     },
     {
+      kind: 'predict',
+      id: 'n04.p1',
+      prompt: 'A 1.0 kg block sits at rest on a 25° slope. Between the block and the slope, μs = 0.50 and μk = 0.40. You let go. What happens?',
+      setup: { sim: 'incline', params: { m: 1, angle: (25 * Math.PI) / 180, muS: 0.5, muK: 0.4, g: 9.8, length: 4 }, startS: 1, startV: 0, seconds: 2 },
+      choices: [
+        { text: 'It slides down, because the slope is tilted', claim: { kind: 'ends-lower', lower: true } },
+        { text: 'It stays put', claim: { kind: 'ends-lower', lower: false } },
+      ],
+      answer: 1,
+      reveal: 'Static friction holds it. The block stays as long as mg sinθ ≤ μs mg cosθ, that is tanθ ≤ μs: tan 25° = 0.47 ≤ 0.50. Look at the arrows: static friction is only mg sinθ = 4.1 N up the slope, not its maximum μs N = 4.4 N. Static friction is only as big as it needs to be. Tilt the slope a few degrees steeper in the Playground and it lets go.',
+    },
+    {
       kind: 'triage',
       id: 'n04.q6',
       problem: 'A 20 kg crate is dragged across a level floor at constant velocity by a rope pulled at 30° above the horizontal. The coefficient of kinetic friction is 0.40. What is the tension in the rope? Use g = 9.8 m/s².',

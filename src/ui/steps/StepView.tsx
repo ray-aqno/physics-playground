@@ -1,8 +1,7 @@
 import { useState } from 'preact/hooks';
 import type { Step } from '../../content/types';
 import { invariant } from '../../lib/invariant';
-import { BodiesSimView } from '../../sims/BodiesSimView';
-import { RampSimView } from '../../sims/RampSimView';
+import { SimForSetup } from '../../sims/SimForSetup';
 import type { StepState } from '../flow';
 import { Markdown } from '../md';
 import { AnswerBox } from './AnswerBox';
@@ -67,10 +66,7 @@ function McqStep({ step, state, onSubmit }: { readonly step: Extract<Step, { kin
 function PredictStep({ step, onComplete, done }: { readonly step: Extract<Step, { kind: 'predict' }>; readonly onComplete: () => void; readonly done: boolean }) {
   invariant(step.choices.length >= 2, 'predict needs choices');
   const [pick, setPick] = useState<number | null>(null);
-  const s = step.setup;
-  const sim = s.sim === 'energy'
-    ? <RampSimView params={s.ramp} startS={s.startS} label={`${step.id} sim`} locked={!done} />
-    : <BodiesSimView preset={s.world} showCom={s.sim === 'com'} label={`${step.id} sim`} locked={!done} />;
+  const sim = <SimForSetup setup={step.setup} label={`${step.id} sim`} locked={!done} />;
   return (
     <div>
       <p class="tag">Predict first, then watch</p>

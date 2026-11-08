@@ -6,6 +6,9 @@ import { stepEventDriven } from '../../src/physics/collisions';
 import { heightAt, stepRamp } from '../../src/physics/energyRamp';
 import { PHYSICS_DT } from '../../src/physics/fixedStep';
 import { centerOfMass, kineticEnergy } from '../../src/physics/invariants';
+import { runCircle } from './headless-circle';
+import { runIncline } from './headless-incline';
+import { runPulley } from './headless-pulley';
 
 type Outcome = (claim: Claim) => boolean;
 
@@ -33,7 +36,11 @@ function runBodies(setup: Extract<SimSetup, { sim: 'collisions' | 'com' }>): Out
         const dv = Math.hypot(c1.vx - c0.vx, c1.vy - c0.vy);
         return claim.change === (dv < 1e-9 ? 'same' : 'different');
       }
-      case 'max-height': return false;
+      case 'max-height':
+      case 'ends-lower':
+      case 'pulley-direction':
+      case 'tension-vs-weight':
+      case 'release-path': return false;
     }
   };
 }
@@ -58,6 +65,17 @@ function runRamp(setup: Extract<SimSetup, { sim: 'energy' }>): Outcome {
   return (claim) => claim.kind === 'max-height' && claim.relation === relation;
 }
 
+function runSetup(setup: SimSetup): Outcome {
+  switch (setup.sim) {
+    case 'energy': return runRamp(setup);
+    case 'collisions':
+    case 'com': return runBodies(setup);
+    case 'incline': return runIncline(setup);
+    case 'pulley': return runPulley(setup);
+    case 'circle': return runCircle(setup);
+  }
+}
+
 const predictSteps = ALL_LESSONS.flatMap((l) => l.steps.filter((s): s is Extract<Step, { kind: 'predict' }> => s.kind === 'predict'));
 
 describe('predict steps agree with a headless sim run (Stage 6)', () => {
@@ -66,7 +84,7 @@ describe('predict steps agree with a headless sim run (Stage 6)', () => {
   });
   for (const step of predictSteps) {
     it(`${step.id}: only the correct choice's claim holds`, () => {
-      const holds = step.setup.sim === 'energy' ? runRamp(step.setup) : runBodies(step.setup);
+      const holds = runSetup(step.setup);
       step.choices.forEach((choice, i) => {
         expect({ choice: choice.text, holds: holds(choice.claim) }).toEqual({ choice: choice.text, holds: i === step.answer });
       });
